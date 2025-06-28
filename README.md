@@ -33,25 +33,18 @@ go mod tidy
 This will download the necessary packages such as gorilla/websocket, gorm, and rs/cors.
 3. Set Up the PostgreSQL Database
 
-Make sure you have PostgreSQL installed and running. You need to create a PostgreSQL database and a user for this project. You can do this by running the following SQL commands in your PostgreSQL client:
-
-CREATE DATABASE mydb;
-CREATE USER postgres WITH PASSWORD 'yourpassword';
-ALTER ROLE postgres SET client_encoding TO 'utf8';
-ALTER ROLE postgres SET default_transaction_isolation TO 'read committed';
-ALTER ROLE postgres SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE mydb TO postgres;
+Make sure you have PostgreSQL installed and running. You need to create a PostgreSQL database and a user for this project:
 
 4. Create .env File
 
 Create a .env file in the root of your project directory to store environment variables. Here's an example .env file:
 
 # PostgreSQL Database Configuration
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=mysecretpassword
-DB_NAME=mydb
+DB_HOST=<database_host>
+DB_PORT=<port_number>
+DB_USER=<db_user>
+DB_PASSWORD=<password>
+DB_NAME=<db_name>
 
 # Server Configuration
 SERVER_PORT=8080
@@ -92,12 +85,12 @@ You can use tools like Postman or a WebSocket client to test the WebSocket conne
 If you're accessing the server from a different domain (e.g., a React or Vue.js front-end), ensure you handle CORS correctly by using the Access-Control-Allow-Origin header. The CORS configuration is already included in the server code to allow all origins (*), but you can customize it for production.
 Environment Variables
 Variable	Description	Example
-DB_HOST	The hostname or IP address of the PostgreSQL server.	localhost
-DB_PORT	The port number for PostgreSQL.	5432
+DB_HOST	The hostname or IP address of the PostgreSQL server.
+DB_PORT	The port number for PostgreSQL.	default is: 5432
 DB_USER	The username to access PostgreSQL.	postgres
-DB_PASSWORD	The password for the PostgreSQL user.	mysecretpassword
-DB_NAME	The name of the database to connect to.	mydb
-SERVER_PORT	The port on which the Go server will run.	8080
+DB_PASSWORD	The password for the PostgreSQL user.	
+DB_NAME	The name of the database to connect to.
+SERVER_PORT	The port on which the Go server will run.	Ex: 8080
 GET /getMessages
 
 Fetches all messages stored in the database and returns them as a JSON array.
